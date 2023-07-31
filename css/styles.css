@@ -1,0 +1,74 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+.pokemonButton_style {
+
+    border: 1px black solid;
+    height: auto;
+    margin: 5px;
+    list-style-type: none;
+    background-color:purple ;
+    color: beige;
+    border-radius: 5px;
+        
+}
+
+.pokemon-list {
+    list-style-type: none;
+    list-style-position: inside;
+    border: 2px blue solid;
+    border-radius: 10px;
+    padding: 2px;
+    max-width: fit-content;
+    
+ 
+}
+
+/* making page mobile tablet and desktop responsive*/
+@media all and (max-width: 500px){
+    .pokemon-list{
+      display:bloc ;
+     
+    }
+    h1 {
+      font-size: 20px;
+    }
+
+    .pokemonButton_style{
+      font-size: 10px;
+    }
+
+  }
+  
+  @media all and (min-width: 500px ) and (max-width: 750px){
+    .pokemon-list {
+      display: flex ; 
+    
+    }
+
+    h1 {
+      font-size: 35px;
+    }
+
+    .pokemonButton_style{
+      font-size: 20px;
+    }
+
+  }
+  
+    @media all and (min-width: 750px){
+      .pokemon-list {
+       display: flex;
+       margin:auto ;
+      }
+     
+       h1 {
+        font-size: 50px;
+      }
+    
+      .pokemonButton_style{
+        font-size: 30px;
+      }
+  
+  }

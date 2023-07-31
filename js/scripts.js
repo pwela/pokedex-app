@@ -18,13 +18,14 @@ let pokemonRepository = (function() {
       }
     ];
   
-    //function getAll 
+//function getAll the pokemons 
     function getAll() {
       return pokemonList;
     }
-    // function add
+
+// function add
     function add(pokemon) {
-      // the second part of the consition in not norking : && Object.keys(pokemon).toString === [name,height,types].toString()
+// the second part of the consition in not norking : && Object.keys(pokemon).toString === [name,height,types].toString()
       if (typeof pokemon == "object" ) {
         pokemonList.push(pokemon);
 
@@ -32,58 +33,49 @@ let pokemonRepository = (function() {
      else window.alert("Incorrect data type");
     }
   
-    return {
-      add: add,
-      getAll: getAll,
   
-    };
-  
-  })();
-  
-  // function to display pokemon
+    function addListItem (pokemon){
+      let pokemons = document.querySelector('.pokemon-list');
+      let pokemonItem = document.createElement('li');
+// Creating a pokemon button
+      let pokemonButton = document.createElement('button');
+//  and adding and event listener for a clic which calls the function showDetails
+//pokemonButton.addEventListener('click', showDetails, pokemon);
+      pokemonButton.innerText = pokemon.name;
+      pokemonButton.classList.add('pokemonButton_style');
+      pokemonItem.appendChild(pokemonButton);
+      pokemons.appendChild(pokemonItem);
+      pokemonButtonClick (pokemon, pokemonButton);
 
-  function displayPokemon (pokemon){
-    document.write("Pokemon name: " + pokemon.name + ", height:" + pokemon.height + "m. ");
-        
-          // check pokemon height
-          if (pokemon.height > 1) {
-            document.write("Wow that's big!" + "<br>");
-          }
-          else {
-            document.write("<br>");
-          }
-      
+      }
+
+   // Show pokemon details
+    function showDetails(pokemon) {
+    console.log(pokemon.name);
     }
-  
-  // filter all pokemons with height < 1
- function filterPokemon (pokemon){
-  if (pokemon.height <1) {
-  return pokemon;
-  }
-}
+   
+  // This function adds a 'click' eventListener to pokemonButton and calls the methos to show pokemon details
+    function pokemonButtonClick (pokemon, pokemonButton) {
+      pokemonButton.addEventListener('click', function () {
+        showDetails(pokemon);
+      });
+    }
 
-function addingParagraph (string) {
-  document.write("<p>" + string + "<p>");  
-}
+      return {
+        add: add,
+        getAll: getAll,
+        addListItem: addListItem
+    
+      };
 
-// display pokemon name and height
-  pokemonRepository.getAll().forEach(displayPokemon);
+  })();
+ 
+//Adding a pokemon
+pokemonRepository.add({name: 'Nidoking', height: 1.4, types: ['ground','poison']})
 
-// Adding a paragraph
- addingParagraph("Pokemons less than 1m");
+//display all the pokemons
+pokemonRepository.getAll().forEach ( function (pokemon){
+  pokemonRepository.addListItem(pokemon);
 
- // filtering and diplaying
- let filteredPokemonRepository = pokemonRepository.getAll().filter(filterPokemon);
- filteredPokemonRepository.forEach( displayPokemon);
+});
 
- addingParagraph("Adding a pokemon");
-pokemonRepository.add({name: 'Blastoise', height: 1.6, types: ['water']} );
-
-addingParagraph("display all pokemons");
-
-pokemonRepository.getAll().forEach(displayPokemon);
-
-addingParagraph("Pokemons less than 1m");
- // filtering and diplaying
-filteredPokemonRepository = pokemonRepository.getAll().filter(filterPokemon);
-filteredPokemonRepository.forEach( displayPokemon);
