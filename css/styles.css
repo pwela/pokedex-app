@@ -1,6 +1,9 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    
     }
+  
+  
 .pokemonButton_style {
 
     border: 1px black solid;
@@ -13,30 +16,39 @@ body{
         
 }
 header{
-
+  position: -webkit-sticky; 
+  position: sticky; 
+  top: 0;
   width: 100% ;
-  /* border: 2px blueviolet solid;
-  height: auto;
-  padding: 0;
-  padding-top: 2px;
-  padding-block: 2px; */
+  z-index: 999;
+  box-sizing: border-box ;
+  padding-block: 2px; 
+  height: 10vh;
+  padding: 2px;
+  margin: 2px 2px 10px 2px ;
+  
 
 }
 
 .pokemon-list {
     list-style-type: none;
     list-style-position: inside;
-    border: 2px blue solid;
     border-radius: 10px;
     padding: 2px;
     max-width: fit-content;
-    
-    
+    height: 90vh;
+    overflow: auto;
  
 }
 
 .displayMessage {
+  
   visibility:hidden ;
+}
+
+.loading-message {
+  float:right ;
+ 
 }
 
 /* making page mobile tablet and desktop responsive*/
@@ -44,6 +56,10 @@ header{
 
     h1 {
       font-size: 20px;
+    }
+
+    h2 {
+      font-size: 10px;
     }
 
     .pokemonButton_style{
@@ -54,24 +70,50 @@ header{
  
   @media all and (min-width: 500px ) and (max-width: 750px){
    
-   h1 {
-      font-size: 35px;
+    .pokemon-list{
+      display:grid;
+      grid: auto /  auto auto;
+    }
+    h1 {
+      font-size: 25px;
+    }
+
+    h2 {
+      font-size: 15px;
     }
 
     .pokemonButton_style{
       font-size: 20px;
     }
+    header{
 
+      display:grid;
+      grid: 10vh / 4fr 1fr;
+           
+    }
   }
   
   @media all and (min-width: 750px){
        
-    h1 {
-      font-size: 50px;
-      }
+    .pokemon-list{
+      display:grid;
+      grid: auto / auto auto auto auto;
+    }
     
     .pokemonButton_style{
       font-size: 30px;
       }
+      header{
+
+        display:grid;
+        grid: 10vh / 4fr 1fr;
+             
+      }
+      h1 {
+        font-size: 35px;
+      }
   
+      h2 {
+        font-size: 20px;
+      }
   }
