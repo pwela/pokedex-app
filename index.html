@@ -7,8 +7,13 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <h1>Pokedex</h1>
+    <header>
+        <h1>Pokedex</h1>
+        <h2 class="loading-message"> Loading pokemons</h2>
+    </header>
    <ul class="pokemon-list"></ul>
-    <script src="js/scripts.js"></script>
+   <script src="js/promise-polyfill.js"></script>
+   <script src="js/fetch.umd.js"></script>
+   <script src="js/scripts.js"></script>
 </body>
 </html>
