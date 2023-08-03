@@ -45,14 +45,87 @@ let pokemonRepository = (function() {
 
       }
 
-   // Show pokemon details
+   // Show modal with pokemon detail
+
     function showDetails(pokemon) {
       loadDetails(pokemon).then(function () {
-        console.log(pokemon);
+      showModal(pokemon);
+      
       });
     }
-   
-  // This function adds a 'click' eventListener to pokemonButton and calls the methos to show pokemon details
+      // Modal display
+     //I have 5 properties here: name, detailsurl,image, height, types.
+   // I should create a modal with name, image, height and types and maybe a link to url via api  
+function showModal(pokemon) {
+
+    // modal container
+    let modalContainer = document.querySelector('#modal-container');
+    modalContainer.innerHTML='';
+    // modal
+    let modal = document.createElement('div');
+    modal.classList.add('modal');
+
+    // modal elements
+    let closeButtonElement = document.createElement('button');
+    closeButtonElement.innerText='Close';
+    closeButtonElement.classList.add('modal-close');
+    closeButtonElement.addEventListener('click', hideModal);
+
+    let pokemonName = document.createElement('h1');
+    pokemonName.innerText = 'Name: ' + pokemon.name;
+    
+    let pokemonHeight = document.createElement('p');
+    pokemonHeight.innerText= 'Height: ' + pokemon.height;
+
+    let pokemonImage = document.createElement('img');
+    pokemonImage.src=pokemon.imageUrl;
+    pokemonImage.classList.add('pokemon-image');
+
+    let pokemonTypesList = document.createElement('ul');
+    pokemonTypesList.innerText=('Types:');
+    pokemonTypesList.classList.add('list-types');
+
+    // This function retrieves each type in the list
+    pokemon.types.forEach(function (typeItem) {
+      let pokemonTypeItem= document.createElement('li');
+      pokemonTypeItem.classList.add('list-types-items');
+      pokemonTypeItem.innerHTML= typeItem.type.name;
+      pokemonTypesList.appendChild(pokemonTypeItem);
+    });
+
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(pokemonName);
+    modal.appendChild(pokemonImage);
+    modal.appendChild(pokemonHeight);
+    modal.appendChild(pokemonTypesList);
+    modalContainer.appendChild(modal);
+    modalContainer.classList.add('is-visible');
+
+    modalContainer.addEventListener('click', (e) => {
+      // Since this is also triggered when clicking INSIDE the modal
+      // We only want to close if the user clicks directly on the overlay
+      let target = e.target;
+      if (target === modalContainer) {
+        hideModal();
+      }
+    });
+    
+}
+
+ function hideModal() {
+  let modalContainer = document.querySelector('#modal-container');
+  modalContainer.classList.remove('is-visible');
+ }
+
+ // Close with keyboard
+window.addEventListener('keydown', (e) => {
+  let modalContainer = document.querySelector('#modal-container');
+  if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+    hideModal();  
+  }
+});
+
+  // This function adds a 'click' eventListener to pokemonButton and calls the method to show pokemon details
     function pokemonButtonClick (pokemon, pokemonButton) {
       pokemonButton.addEventListener('click', function () {
         showDetails(pokemon);
@@ -71,7 +144,7 @@ let pokemonRepository = (function() {
             name: item.name,
             detailsUrl: item.url
           };
-          add(pokemon);
+          add(pokemon); // this is the add function delacred above
         });
       }).catch(function (e) {
         console.error(e);
