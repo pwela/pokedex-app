@@ -1,7 +1,7 @@
 // Creating IIFE
 let pokemonRepository = (function() {
   let pokemonList = [];
-  let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=150";
+  let apiUrl ='https://pokeapi.co/api/v2/pokemon/?limit=150';
   let loadingMessage = document.querySelector('.loading-message');
  
 // Hide loading message
@@ -20,11 +20,11 @@ function showLoadingMessage() {
 // function add
   function add(pokemon) {
 // the second part of the consition in not norking : && Object.keys(pokemon).toString === [name,height,types].toString()
-    if (typeof pokemon == "object" ) {
+    if (typeof pokemon == 'object') {
       pokemonList.push(pokemon);
 
     }
-   else window.alert("Incorrect data type");
+   else window.alert('Incorrect data type');
   }
 
 
