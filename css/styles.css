@@ -15,16 +15,16 @@ h5 {
 }
 /* making page mobile tablet and desktop responsive*/
  
-  @media all and (min-width: 500px ) and (max-width: 750px){
-   
+
+  
+  @media all and (max-width: 500px){
+       
     .list-group{
       display:grid;
-      grid: auto /  auto auto;
+      grid: auto / auto;
     }
-
-
+    
   }
-  
  
   @media all and (min-width: 750px){
        
