@@ -27,7 +27,7 @@ Created Dist and src resporitories to separate sources and production files.
 3. Bootstrap
 4. ESLint
 5. Prettier
-6. HTMLS
+6. HTML
 
 # Dependencies
 
