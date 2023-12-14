@@ -11,7 +11,7 @@ Created Dist and src resporitories to separate sources and production files.
 
 # Key features:
 
-- load data from an external API; for instance, the Pokémon API.
+- load data from an external API; for instance, the <a href="https://pokeapi.co/">Pokémon API </a>.
 - display a list of items loaded from that API after the page is loaded.
 - enable the viewing of more details for a given list item (like a Pokémon) on demand, such as when clicking on a list item.
 - CSS styling.
