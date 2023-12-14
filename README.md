@@ -22,11 +22,12 @@ Created Dist and src resporitories to separate sources and production files.
 
 # Technologies used
 
-1. javascript
+1. JavaScript
 2. CSS
 3. Bootstrap
 4. ESLint
 5. Prettier
+6. HTMLS
 
 # Dependencies
 
