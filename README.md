@@ -28,6 +28,7 @@ Created Dist and src resporitories to separate sources and production files.
 4. ESLint
 5. Prettier
 6. HTML
+7. polyfills (New Promise and fetch)
 
 # Dependencies
 
